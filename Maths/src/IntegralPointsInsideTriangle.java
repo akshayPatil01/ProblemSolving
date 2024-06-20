@@ -2,9 +2,9 @@ package Maths.src;
 
 public class IntegralPointsInsideTriangle {
     public static void main(String[] args) {
-        long[] p = {0, 0};
-        long[] q = {0, 5};
-        long[] r = {5, 0};
+        long[] p = {62, -3};
+        long[] q = {5, -45};
+        long[] r = {-19, -23};
 
         System.out.println("Count of integral points inside triangle: " + InternalCount(p, q, r));
     }
