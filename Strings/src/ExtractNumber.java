@@ -1,7 +1,8 @@
 public class ExtractNumber {
     public static void main(String[] args) {
         ExtractNumber e = new ExtractNumber();
-        System.out.println("Max Extracted Number: " + e.extractNumber("This is alpha 5057 and 97"));
+        String sentence = "This is alpha 5057 and 97";
+        System.out.println("Max Extracted Number: " + e.extractNumber(sentence));
     }
 
     long extractNumber(String sentence) {
