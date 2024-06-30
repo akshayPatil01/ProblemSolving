@@ -22,13 +22,13 @@ public class DeleteNodeDLL {
         dll.append(5);
 
         System.out.print("Original DLL  -->  ");
-        dll.printList();
+        printList(dll.head);
 
         int position = 3;
-        dll.deleteNode(dll.head, position);
+        dll.head = dll.deleteNode(dll.head, position);
 
         System.out.print("After deleting node at position " + position + "  -->  ");
-        dll.printList();
+        printList(dll.head);
     }
 
     public void append(int new_data) {
@@ -76,7 +76,7 @@ public class DeleteNodeDLL {
         return head;
     }
 
-    void printList() {
+    public static void printList(Node head) {
         Node node = head;
         while (node != null) {
             System.out.print(node.data + " ");
