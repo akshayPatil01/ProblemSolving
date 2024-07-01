@@ -1,47 +1,23 @@
 import Util.DLLNode;
+import Util.LLUtilMethods;
+
+import java.util.Arrays;
 
 public class DeleteNodeDLL {
-    DLLNode head; // head of the list
-
     public static void main(String[] args) {
-        DeleteNodeDLL dll = new DeleteNodeDLL();
-
-        dll.append(1);
-        dll.append(3);
-        dll.append(4);
-        dll.append(5);
+        DLLNode head = LLUtilMethods.createDLL(Arrays.asList(1, 2, 3, 4, 5));
 
         System.out.print("Original DLL  -->  ");
-        printList(dll.head);
+        LLUtilMethods.printDLList(head);
 
         int position = 3;
-        dll.head = dll.deleteNode(dll.head, position);
+        head = deleteNode(head, position);
 
         System.out.print("After deleting node at position " + position + "  -->  ");
-        printList(dll.head);
+        LLUtilMethods.printDLList(head);
     }
 
-    public void append(int new_data) {
-        DLLNode new_node = new DLLNode(new_data);
-        DLLNode last = head;
-
-        new_node.next = null;
-
-        if (head == null) {
-            new_node.prev = null;
-            head = new_node;
-            return;
-        }
-
-        while (last.next != null) {
-            last = last.next;
-        }
-
-        last.next = new_node;
-        new_node.prev = last;
-    }
-
-    public DLLNode deleteNode(DLLNode head, int x) {
+    public static DLLNode deleteNode(DLLNode head, int x) {
         DLLNode temp = head;
 
         while (x > 1) {
@@ -64,15 +40,6 @@ public class DeleteNodeDLL {
             temp.next.prev = temp.prev;
 
         return head;
-    }
-
-    public static void printList(DLLNode head) {
-        DLLNode node = head;
-        while (node != null) {
-            System.out.print(node.data + " ");
-            node = node.next;
-        }
-        System.out.println();
     }
 }
 
