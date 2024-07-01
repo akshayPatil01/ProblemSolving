@@ -1,23 +1,21 @@
+import Util.LLUtilMethods;
 import Util.Node;
 import Util.Tree;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class LLToTree {
     public static void main(String[] args) {
-        // Construct the linked list 1->2->3->4->5
-        Node head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
+        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5, 10, 6));
+        System.out.print("LL: ");
+        LLUtilMethods.printLL(head);
 
-        // Convert the linked list to a binary tree
+        System.out.println();
         Tree root = convert(head, null);
 
-        // Perform level order traversal
-        System.out.println("Level order traversal of the constructed binary tree:");
+        System.out.println("Level order traversal of the constructed binary tree: ");
         levelOrderTraversal(root);
     }
 
@@ -41,8 +39,7 @@ public class LLToTree {
             childNodes.offer(curTreeNode.left);
             temp = temp.next;
 
-            if (temp == null)
-                break;
+            if (temp == null) break;
 
             curTreeNode.right = new Tree(temp.data);
             childNodes.offer(curTreeNode.right);
