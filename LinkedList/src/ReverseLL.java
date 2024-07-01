@@ -18,7 +18,7 @@ public class ReverseLL {
 
     Node reverseList(Node head) {
         // code here
-        Node next = null;
+        Node next;
         Node current = head;
         Node prev = null;
 

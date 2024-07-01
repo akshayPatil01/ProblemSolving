@@ -43,7 +43,7 @@ public class PalindromeLL {
     private Node reverseLL(Node head) {
         Node current = head;
         Node prev = null;
-        Node next = null;
+        Node next;
 
         while (current != null) {
             next = current.next;
