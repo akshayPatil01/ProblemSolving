@@ -1,3 +1,5 @@
+import Util.Node;
+
 public class IdenticalLinkedList {
     public static void main(String[] args) {
         IdenticalLinkedList i = new IdenticalLinkedList();
@@ -24,15 +26,5 @@ public class IdenticalLinkedList {
         }
 
         return head1 == null && head2 == null;
-    }
-}
-
-class Node {
-    int data;
-    Node next;
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
     }
 }

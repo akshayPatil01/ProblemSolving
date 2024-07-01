@@ -1,17 +1,7 @@
+import Util.DLLNode;
+
 public class DeleteNodeDLL {
-    Node head; // head of the list
-
-    private static class Node {
-        int data;
-        Node next;
-        Node prev;
-
-        public Node(int data) {
-            this.data = data;
-            this.next = null;
-            this.prev = null;
-        }
-    }
+    DLLNode head; // head of the list
 
     public static void main(String[] args) {
         DeleteNodeDLL dll = new DeleteNodeDLL();
@@ -32,8 +22,8 @@ public class DeleteNodeDLL {
     }
 
     public void append(int new_data) {
-        Node new_node = new Node(new_data);
-        Node last = head;
+        DLLNode new_node = new DLLNode(new_data);
+        DLLNode last = head;
 
         new_node.next = null;
 
@@ -51,8 +41,8 @@ public class DeleteNodeDLL {
         new_node.prev = last;
     }
 
-    public Node deleteNode(Node head, int x) {
-        Node temp = head;
+    public DLLNode deleteNode(DLLNode head, int x) {
+        DLLNode temp = head;
 
         while (x > 1) {
             temp = temp.next;
@@ -64,7 +54,7 @@ public class DeleteNodeDLL {
         if (temp.prev != null)
             temp.prev.next = temp.next;
         else {                      // if node to be deleted is HEAD
-            if (temp.next != null)   // Check if it is Single Node list
+            if (temp.next != null)   // Check if it is Single Util.Node list
                 temp.next.prev = null;
 
             return temp.next;
@@ -76,8 +66,8 @@ public class DeleteNodeDLL {
         return head;
     }
 
-    public static void printList(Node head) {
-        Node node = head;
+    public static void printList(DLLNode head) {
+        DLLNode node = head;
         while (node != null) {
             System.out.print(node.data + " ");
             node = node.next;
