@@ -1,3 +1,5 @@
+import Util.Node;
+
 public class IdenticalLinkedList {
     public static void main(String[] args) {
         IdenticalLinkedList i = new IdenticalLinkedList();

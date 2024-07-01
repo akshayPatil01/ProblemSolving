@@ -1,3 +1,5 @@
+import Util.DLLNode;
+
 public class DeleteNodeDLL {
     DLLNode head; // head of the list
 
@@ -52,7 +54,7 @@ public class DeleteNodeDLL {
         if (temp.prev != null)
             temp.prev.next = temp.next;
         else {                      // if node to be deleted is HEAD
-            if (temp.next != null)   // Check if it is Single Node list
+            if (temp.next != null)   // Check if it is Single Util.Node list
                 temp.next.prev = null;
 
             return temp.next;

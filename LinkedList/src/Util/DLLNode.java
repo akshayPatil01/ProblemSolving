@@ -1,7 +1,9 @@
+package Util;
+
 public class DLLNode {
-    int data;
-    DLLNode next;
-    DLLNode prev;
+    public int data;
+    public DLLNode next;
+    public DLLNode prev;
 
     public DLLNode(int data) {
         this.data = data;
