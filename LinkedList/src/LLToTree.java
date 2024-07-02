@@ -8,40 +8,40 @@ import java.util.Queue;
 
 public class LLToTree {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5, 10, 6));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5, 10, 6));
         System.out.print("LL: ");
         LLUtilMethods.printLL(head);
 
         System.out.println();
-        Tree root = convert(head, null);
+        Tree<Integer> root = convert(head, null);
 
         System.out.println("Level order traversal of the constructed binary tree: ");
         levelOrderTraversal(root);
     }
 
-    public static Tree convert(Node head, Tree node) {
+    public static Tree<Integer> convert(Node<Integer> head, Tree<Integer> node) {
         // add code here.
-        Node temp = head;
+        Node<Integer> temp = head;
 
         if (node == null) {
-            node = new Tree(temp.data);
+            node = new Tree<>(temp.data);
             temp = temp.next;
         }
 
-        Queue<Tree> childNodes = new LinkedList<>();
+        Queue<Tree<Integer>> childNodes = new LinkedList<>();
 
         childNodes.offer(node);
 
         while (temp != null && !childNodes.isEmpty()) {
-            Tree curTreeNode = childNodes.poll();
+            Tree<Integer> curTreeNode = childNodes.poll();
 
-            curTreeNode.left = new Tree(temp.data);
+            curTreeNode.left = new Tree<>(temp.data);
             childNodes.offer(curTreeNode.left);
             temp = temp.next;
 
             if (temp == null) break;
 
-            curTreeNode.right = new Tree(temp.data);
+            curTreeNode.right = new Tree<>(temp.data);
             childNodes.offer(curTreeNode.right);
             temp = temp.next;
         }
@@ -49,16 +49,16 @@ public class LLToTree {
         return node;
     }
 
-    public static void levelOrderTraversal(Tree root) {
+    public static void levelOrderTraversal(Tree<Integer> root) {
         if (root == null) {
             return;
         }
 
-        Queue<Tree> queue = new LinkedList<>();
+        Queue<Tree<Integer>> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            Tree current = queue.poll();
+            Tree<Integer> current = queue.poll();
             System.out.print(current.data + " ");
 
             if (current.left != null) {

@@ -1,9 +1,11 @@
 import Util.LLUtilMethods;
 import Util.Node;
 
+import java.util.Arrays;
+
 public class RemoveLoopLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLLWithLoop();
+        Node<Integer> head = LLUtilMethods.createLLWithLoop(Arrays.asList(1, 2, 3, 4, 5), 2);
 
         removeLoop(head);
 
@@ -11,12 +13,12 @@ public class RemoveLoopLL {
         LLUtilMethods.printLL(head);
     }
 
-    public static void removeLoop(Node head) {
+    public static void removeLoop(Node<Integer> head) {
         // code here
         if (head == null) return;
 
-        Node fastP = head.next;
-        Node slowP = head;
+        Node<Integer> fastP = head.next;
+        Node<Integer> slowP = head;
 
         while (fastP != slowP) {
             if (fastP == null || fastP.next == null) return;
@@ -25,7 +27,7 @@ public class RemoveLoopLL {
             slowP = slowP.next;
         }
 
-        Node loopMemberNode = fastP;
+        Node<Integer> loopMemberNode = fastP;
         int loopLength = 1;
 
         while (loopMemberNode != fastP.next) {
