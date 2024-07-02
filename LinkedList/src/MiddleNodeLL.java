@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class MiddleNodeLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
         System.out.print("LL: ");
         LLUtilMethods.printLL(head);
 
@@ -14,10 +14,10 @@ public class MiddleNodeLL {
         System.out.println("Middle node of LL is: " + middleNode);
     }
 
-    int getMiddle(Node head) {
+    int getMiddle(Node<Integer> head) {
         // Your code here.
-        Node slow = head;
-        Node fast = head;
+        Node<Integer> slow = head;
+        Node<Integer> fast = head;
 
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;

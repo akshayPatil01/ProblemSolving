@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class ReverseLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
         System.out.print("Original LL: ");
         LLUtilMethods.printLL(head);
 
@@ -16,11 +16,11 @@ public class ReverseLL {
         LLUtilMethods.printLL(head);
     }
 
-    Node reverseList(Node head) {
+    Node<Integer> reverseList(Node<Integer> head) {
         // code here
-        Node next;
-        Node current = head;
-        Node prev = null;
+        Node<Integer> next;
+        Node<Integer> current = head;
+        Node<Integer> prev = null;
 
         while (current != null) {
             next = current.next;

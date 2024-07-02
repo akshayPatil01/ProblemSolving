@@ -1,17 +1,16 @@
 package Util;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class LLUtilMethods {
-    public static Node createLL(List<Integer> elements) {
+    public static <T> Node<T> createLL(List<T> elements) {
         if (elements.isEmpty()) return null;
 
-        Node temp = new Node(-1);
-        Node head = temp;
+        Node<T> temp = new Node<>(null);
+        Node<T> head = temp;
 
-        for (int el : elements) {
-            Node newNode = new Node(el);
+        for (T el : elements) {
+            Node<T> newNode = new Node<>(el);
             temp.next = newNode;
 
             temp = newNode;
@@ -20,31 +19,61 @@ public class LLUtilMethods {
         return head.next;
     }
 
-    public static Node createLLWithLoop() {
-        Node head = createLL(Arrays.asList(1, 2, 3, 4, 5));
-
+    public static <T> Node<T> createLLWithLoop(List<T> elements, int sizeOfLoop) {
+        Node<T> head = createLL(elements);
         assert head != null;
-        head.next.next.next.next.next = head.next.next;
 
-        System.out.println("Original Looped LL: " + "1 2 3 4 5 -> 3 ...");
+        System.out.print("Original Looped LL: ");
+        printLL(head);
+
+        int length = getLength(head);
+
+        Node<T> startNode = head;
+        int start = length;
+        while (start > 1) {
+            startNode = startNode.next;
+            start--;
+        }
+
+        int endOfLoop = length - sizeOfLoop;
+        Node<T> endNode = head;
+        while (endOfLoop > 0) {
+            endNode = endNode.next;
+            endOfLoop--;
+        }
+
+        startNode.next = endNode;
+        System.out.println("Loop Starts at -> " + startNode.data + " & End at -> " + endNode.data);
+
         return head;
     }
 
-    public static DLLNode createDLL(List<Integer> elements) {
+    private static <T> int getLength(Node<T> root) {
+        int length = 0;
+
+        while (root != null) {
+            root = root.next;
+            length++;
+        }
+
+        return length;
+    }
+
+    public static <T> DLLNode<T> createDLL(List<T> elements) {
         if (elements.isEmpty()) return null;
 
-        DLLNode head = null;
+        DLLNode<T> head = null;
 
-        for (int el : elements) {
+        for (T el : elements) {
             head = appendDLL(head, el);
         }
 
         return head;
     }
 
-    private static DLLNode appendDLL(DLLNode head, int new_data) {
-        DLLNode new_node = new DLLNode(new_data);
-        DLLNode last = head;
+    private static <T> DLLNode<T> appendDLL(DLLNode<T> head, T new_data) {
+        DLLNode<T> new_node = new DLLNode<>(new_data);
+        DLLNode<T> last = head;
 
         new_node.next = null;
 
@@ -63,8 +92,8 @@ public class LLUtilMethods {
         return head;
     }
 
-    public static void printDLList(DLLNode head) {
-        DLLNode node = head;
+    public static <T> void printDLL(DLLNode<T> head) {
+        DLLNode<T> node = head;
         while (node != null) {
             System.out.print(node.data + " ");
             node = node.next;
@@ -72,8 +101,8 @@ public class LLUtilMethods {
         System.out.println();
     }
 
-    public static void printLL(Node head) {
-        Node node = head;
+    public static <T> void printLL(Node<T> head) {
+        Node<T> node = head;
         while (node != null) {
             System.out.print(node.data + " ");
             node = node.next;

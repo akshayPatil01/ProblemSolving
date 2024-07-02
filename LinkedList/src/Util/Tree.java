@@ -1,11 +1,11 @@
 package Util;
 
-public class Tree {
-    public int data;
-    public Tree left;
-    public Tree right;
+public class Tree<T> {
+    public T data;
+    public Tree<T> left;
+    public Tree<T> right;
 
-    public Tree(int data) {
+    public Tree(T data) {
         this.data = data;
         this.left = null;
         this.right = null;

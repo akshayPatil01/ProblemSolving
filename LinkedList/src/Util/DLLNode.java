@@ -1,11 +1,11 @@
 package Util;
 
-public class DLLNode {
-    public int data;
-    public DLLNode next;
-    public DLLNode prev;
+public class DLLNode<T> {
+    public T data;
+    public DLLNode<T> next;
+    public DLLNode<T> prev;
 
-    public DLLNode(int data) {
+    public DLLNode(T data) {
         this.data = data;
         this.next = null;
         this.prev = null;

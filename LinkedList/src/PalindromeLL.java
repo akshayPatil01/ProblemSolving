@@ -2,10 +2,11 @@ import Util.LLUtilMethods;
 import Util.Node;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class PalindromeLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 1));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 1));
         System.out.print("LL 1: ");
         LLUtilMethods.printLL(head);
 
@@ -15,7 +16,7 @@ public class PalindromeLL {
 
         System.out.println("-------------------------");
 
-        Node head2 = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 2, 1));
+        Node<Integer> head2 = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 2, 1));
         System.out.print("LL 2: ");
         LLUtilMethods.printLL(head2);
 
@@ -23,15 +24,15 @@ public class PalindromeLL {
         System.out.println("Is above LL a palindrome ?: " + isPalindrome);
     }
 
-    boolean isPalindrome(Node head) {
+    boolean isPalindrome(Node<Integer> head) {
         //Your code here
         if (head == null) throw new IllegalArgumentException("LL should not be empty.");
 
-        Node copyHead = copyLinkedList(head);
-        Node revHead = reverseLL(head);
+        Node<Integer> copyHead = copyLinkedList(head);
+        Node<Integer> revHead = reverseLL(head);
 
         while (copyHead != null) {
-            if (copyHead.data != revHead.data) return false;
+            if (!Objects.equals(copyHead.data, revHead.data)) return false;
 
             copyHead = copyHead.next;
             revHead = revHead.next;
@@ -40,10 +41,10 @@ public class PalindromeLL {
         return true;
     }
 
-    private Node reverseLL(Node head) {
-        Node current = head;
-        Node prev = null;
-        Node next;
+    private Node<Integer> reverseLL(Node<Integer> head) {
+        Node<Integer> current = head;
+        Node<Integer> prev = null;
+        Node<Integer> next;
 
         while (current != null) {
             next = current.next;
@@ -55,13 +56,13 @@ public class PalindromeLL {
         return prev;
     }
 
-    private Node copyLinkedList(Node head) {
-        Node newHead = new Node(head.data);
+    private Node<Integer> copyLinkedList(Node<Integer> head) {
+        Node<Integer> newHead = new Node<>(head.data);
 
-        Node current = newHead;
+        Node<Integer> current = newHead;
         head = head.next;
         while (head != null) {
-            Node newNode = new Node(head.data);
+            Node<Integer> newNode = new Node<>(head.data);
             head = head.next;
             current.next = newNode;
             current = current.next;

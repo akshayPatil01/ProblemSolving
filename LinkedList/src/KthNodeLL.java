@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class KthNodeLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 3, 4, 5));
         System.out.print("LL: ");
         LLUtilMethods.printLL(head);
 
@@ -16,20 +16,19 @@ public class KthNodeLL {
         System.out.println(k + "th node from last is: " + kth);
     }
 
-    int getNthFromLast(Node head, int n) {
+    int getNthFromLast(Node<Integer> head, int n) {
         // Your code here
         int temp = n;
-        Node tempNode = head;
+        Node<Integer> tempNode = head;
 
         while (temp != 0) {
-            if (tempNode == null)
-                return -1;
+            if (tempNode == null) return -1;
 
             tempNode = tempNode.next;
             temp--;
         }
 
-        Node nthNode = head;
+        Node<Integer> nthNode = head;
         while (tempNode != null) {
             nthNode = nthNode.next;
             tempNode = tempNode.next;

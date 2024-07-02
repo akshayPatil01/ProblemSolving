@@ -5,20 +5,20 @@ import java.util.Arrays;
 
 public class DeleteNodeDLL {
     public static void main(String[] args) {
-        DLLNode head = LLUtilMethods.createDLL(Arrays.asList(1, 2, 3, 4, 5));
+        DLLNode<Integer> head = LLUtilMethods.createDLL(Arrays.asList(1, 2, 3, 4, 5));
 
         System.out.print("Original DLL  -->  ");
-        LLUtilMethods.printDLList(head);
+        LLUtilMethods.printDLL(head);
 
         int position = 3;
         head = deleteNode(head, position);
 
         System.out.print("After deleting node at position " + position + "  -->  ");
-        LLUtilMethods.printDLList(head);
+        LLUtilMethods.printDLL(head);
     }
 
-    public static DLLNode deleteNode(DLLNode head, int x) {
-        DLLNode temp = head;
+    public static DLLNode<Integer> deleteNode(DLLNode<Integer> head, int x) {
+        DLLNode<Integer> temp = head;
 
         while (x > 1) {
             temp = temp.next;

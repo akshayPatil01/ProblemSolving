@@ -2,10 +2,11 @@ import Util.LLUtilMethods;
 import Util.Node;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class RemoveDuplicatesSortedLL {
     public static void main(String[] args) {
-        Node head = LLUtilMethods.createLL(Arrays.asList(1, 2, 2, 3, 4, 5, 5, 6));
+        Node<Integer> head = LLUtilMethods.createLL(Arrays.asList(1, 2, 2, 3, 4, 5, 5, 6));
         System.out.print("Original LL:   ");
         LLUtilMethods.printLL(head);
 
@@ -17,15 +18,15 @@ public class RemoveDuplicatesSortedLL {
         LLUtilMethods.printLL(head);
     }
 
-    Node removeDuplicates(Node head) {
+    Node<Integer> removeDuplicates(Node<Integer> head) {
         // Your code here
         if (head == null) return null;
 
-        Node current = head;
-        Node next = head.next;
+        Node<Integer> current = head;
+        Node<Integer> next = head.next;
 
         while (next != null) {
-            if (current.data == next.data) {
+            if (Objects.equals(current.data, next.data)) {
                 next = next.next;
                 current.next = next;
             } else {
