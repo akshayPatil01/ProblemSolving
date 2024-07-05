@@ -16,7 +16,7 @@ public class DuplicateSubtrees {
 
         DuplicateSubtrees d = new DuplicateSubtrees();
 
-        List<Node<Integer>> solutionList = d.printAllDups(root);
+        List<Node<Integer>> solutionList = d.printAllDuplicates(root);
 
         solutionList.sort(Comparator.comparingInt(head -> head.data));
 
@@ -29,14 +29,12 @@ public class DuplicateSubtrees {
     private List<Node<Integer>> duplicateHeadList;
     private Map<String, Integer> countMap;
 
-    public List<Node<Integer>> printAllDups(Node<Integer> root) {
-        // code here
+    public List<Node<Integer>> printAllDuplicates(Node<Integer> root) {
         duplicateHeadList = new ArrayList<>();
         countMap = new HashMap<>();
 
         serialize(root);
 
-        //duplicateHeadList.sort(Comparator.comparingInt(head -> head.data));
         return duplicateHeadList;
     }
 

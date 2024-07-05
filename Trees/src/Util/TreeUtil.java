@@ -1,6 +1,7 @@
 package Util;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class TreeUtil {
@@ -37,8 +38,7 @@ public class TreeUtil {
         while (!queue.isEmpty()) {
             Node<T> node = queue.poll();
 
-            if (node == null)
-                continue;
+            if (node == null) continue;
 
             System.out.print(node.data + " ");
             queue.add(node.left);
@@ -46,17 +46,35 @@ public class TreeUtil {
         }
     }
 
-//    public static <T> Node<T> createTree(List<T> elements) {
-//        Node<T> root = null;
-//        for(T el: elements) {
-//            if(root == null) root = new Node<>(el);
-//
-//            root.left =
-//            createTree(root.left);
-//            createTree(root.right);
-//        }
-//
-//        return root;
-//    }
+    public static <T> Node<T> createTreeFromLevelOrder(List<T> elements) {
+        Node<T> root = null;
+
+        if (elements.isEmpty() || elements.get(0) == null) return root;
+
+        root = new Node<>(elements.get(0));
+
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(root);
+
+        int N = elements.size();
+        int i = 0;
+        while (i < N && !queue.isEmpty()) {
+            Node<T> node = queue.poll();
+
+            i++;
+            if (i < N && elements.get(i) != null) {
+                node.left = new Node<>(elements.get(i));
+                queue.add(node.left);
+            }
+
+            i++;
+            if (i < N && elements.get(i) != null) {
+                node.right = new Node<>(elements.get(i));
+                queue.add(node.right);
+            }
+        }
+
+        return root;
+    }
 
 }
