@@ -77,4 +77,44 @@ public class TreeUtil {
         return root;
     }
 
+    public static SNode createSTreeFromLevelOrder(List<Integer> elements) {
+        SNode root = null;
+
+        if (elements.isEmpty() || elements.get(0) == null) return root;
+
+        root = new SNode(elements.get(0));
+
+        Queue<SNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        int N = elements.size();
+        int i = 0;
+        while (i < N && !queue.isEmpty()) {
+            SNode node = queue.poll();
+
+            i++;
+            if (i < N && elements.get(i) != null) {
+                node.left = new SNode(elements.get(i));
+                queue.add(node.left);
+            }
+
+            i++;
+            if (i < N && elements.get(i) != null) {
+                node.right = new SNode(elements.get(i));
+                queue.add(node.right);
+            }
+        }
+
+        return root;
+    }
+
+    public static void inorderSuccessorTraversal(SNode root) {
+        if (root == null) return;
+
+        inorderSuccessorTraversal(root.left);
+        if (root.next == null) root.next = new SNode(-1);
+        System.out.print(root.data + "->" + root.next.data + " ");
+        inorderSuccessorTraversal(root.right);
+    }
+
 }
