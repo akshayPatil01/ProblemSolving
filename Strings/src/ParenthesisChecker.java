@@ -2,10 +2,11 @@ import java.util.Stack;
 
 public class ParenthesisChecker {
     public static void main(String[] args) {
-        System.out.println(ispar("([]"));
+        String str = "([]";
+        System.out.println(isPar(str));
     }
 
-    private static boolean ispar(String x) {
+    private static boolean isPar(String x) {
         Stack<Character> parStack = new Stack<>();
 
         for (char par : x.toCharArray()) {
